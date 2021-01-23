@@ -119,18 +119,18 @@ RUN sleep 91                                 \
  && cd $PREFIX                               \
  && rm -rf etc man share ssl
 
-FROM scratch as squash
-COPY --from=builder / /
-RUN chown -R tor:tor /var/lib/tor
-SHELL ["/usr/bin/bash", "-l", "-c"]
-ARG TEST
-
-FROM squash as test
-ARG TEST
-RUN tor --verify-config \
- && sleep 127           \
- && xbps-install -S     \
- && exec true || exec false
-
-FROM squash as final
-
+#FROM scratch as squash
+#COPY --from=builder / /
+#RUN chown -R tor:tor /var/lib/tor
+#SHELL ["/usr/bin/bash", "-l", "-c"]
+#ARG TEST
+#
+#FROM squash as test
+#ARG TEST
+#RUN tor --verify-config \
+# && sleep 127           \
+# && xbps-install -S     \
+# && exec true || exec false
+#
+#FROM squash as final
+#
