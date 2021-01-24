@@ -48,7 +48,7 @@ ENV CPPFLAGS="-DNDEBUG $CPPFLAGS"
 ENV   CFLAGS="-Ofast -g0 $CFLAGS"
 
 # Static
-ENV  LDFLAGS="-static -static-libgcc -static-libstdc++ $LDFLAGS"
+ENV  LDFLAGS="$LDFLAGS -static -static-libgcc -static-libstdc++"
 
 # LTO
 #ENV   CFLAGS="-fuse-linker-plugin -flto $CFLAGS"
