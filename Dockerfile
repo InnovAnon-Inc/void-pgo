@@ -70,13 +70,14 @@ ENV CLANGXXFLAGS="$CLANGFLAGS $CXXFLAGS"
 ENV CXXFLAGS="$CFLAGS $CXXFLAGS"
 
 WORKDIR /tmp
-RUN command -v $CC                                 \
- && command -v $CXX                                \
- && command -v $FC                                 \
- && command -v $NM                                 \
- && command -v $AR                                 \
- && command -v $RANLIB                             \
- && command -v $STRIP                              \
+RUN command -v "$CC"                               \
+ && command -v "$CXX"                              \
+ && command -v "$FC"                               \
+ && command -v "$NM"                               \
+ && command -v "$AR"                               \
+ && command -v "$RANLIB"                           \
+ && command -v "$STRIP"                            \
+ && test -n "$PREFIX"                              \
  \
  && FLAG=0                                         \
   ; for k in $(seq 1009) ; do                      \
@@ -84,7 +85,7 @@ RUN command -v $CC                                 \
    || continue                                     \
     ; FLAG=1                                       \
     ; break                                        \
-    done                                           \
+  ; done                                           \
  && test "$FLAG" -ne 0                             \
  && clang $CLANGFLAGS -c -o fingerprint.o          \
       fingerprint.bc $LDFLAGS                      \
