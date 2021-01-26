@@ -70,7 +70,28 @@ ENV CLANGXXFLAGS="$CLANGFLAGS $CXXFLAGS"
 ENV CXXFLAGS="$CFLAGS $CXXFLAGS"
 
 WORKDIR /tmp
-RUN sleep 91                                 \
+RUN command -v $CC                                 \
+ && command -v $CXX                                \
+ && command -v $FC                                 \
+ && command -v $NM                                 \
+ && command -v $AR                                 \
+ && command -v $RANLIB                             \
+ && command -v $STRIP                              \
+ \
+ && FLAG=0                                         \
+  ; for k in $(seq 1009) ; do                      \
+      polygen -pedantic -o fingerprint.bc llvm.grm \
+   || continue                                     \
+    ; FLAG=1                                       \
+    ; break                                        \
+    done                                           \
+ && test "$FLAG" -ne 0                             \
+ && clang $CLANGFLAGS -c -o fingerprint.o          \
+      fingerprint.bc $LDFLAGS                      \
+ && ar vcrs libfingerprint.a fingerprint.o         \
+ && install -v -D libfingerprint.a "$PREFIX"       \
+ \
+ && sleep 91                                 \
  && git clone --depth=1 --recursive          \
       https://github.com/madler/zlib.git     \
  && cd                          zlib         \
