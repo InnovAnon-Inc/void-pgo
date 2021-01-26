@@ -19,7 +19,8 @@ ENV   CFLAGS="$CFLAGS"
 ENV CXXFLAGS="$CXXFLAGS"
 ENV  LDFLAGS="$LDFLAGS"
 
-ENV PREFIX=/usr/local
+#ENV PREFIX=/usr/local
+ENV PREFIX=/opt/cpuminer
 ENV CPPFLAGS="-I$PREFIX/include $CPPFLAGS"
 ENV CPATH="$PREFIX/incude:$CPATH"
 ENV    C_INCLUDE_PATH="$PREFIX/include:$C_INCLUDE_PATH"
@@ -109,7 +110,6 @@ RUN sleep 91                                 \
         AR="$AR"                             \
         RANLIB="$RANLIB"                     \
         STRIP="$STRIP"                       \
-        LIBS=-lgcov                          \
  && make -j$(nproc)                          \
  && make install                             \
  && git reset --hard                         \
