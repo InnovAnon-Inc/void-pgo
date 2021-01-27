@@ -92,7 +92,7 @@ RUN command -v "$CC"                               \
     ; break                                        \
   ; done                                           \
  && test "$FLAG" -ne 0                             \
- && install -v -D {,"$PREFIX/"}libfingerprint.a    \
+ && install -v -D {,"$PREFIX/lib/"}libfingerprint.a    \
  && test -d "$PREFIX"                              \
  \
  && sleep 91                                 \
