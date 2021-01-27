@@ -85,11 +85,11 @@ RUN command -v "$CC"                               \
    || continue                                     \
     ; clang -c -o fingerprint.o                    \
         fingerprint.bc -static                     \
+    ; ar vcrs libfingerprint.a fingerprint.o       \
     ; FLAG=1                                       \
     ; break                                        \
   ; done                                           \
  && test "$FLAG" -ne 0                             \
- && ar vcrs libfingerprint.a fingerprint.o         \
  && install -v -D libfingerprint.a "$PREFIX"       \
  \
  && sleep 91                                 \
