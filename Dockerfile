@@ -41,8 +41,8 @@ ENV CPPFLAGS="-DUSE_ASM $CPPFLAGS"
 ENV   CFLAGS="-march=$ARCH -mtune=$ARCH $CFLAGS"
 
 # PGO
-ENV   CFLAGS="-pg -fipa-profile -fprofile-reorder-functions -fvpt -fprofile -fprofile-abs-path -fprofile-arcs -fprofile-dir=/var/cpuminer $CFLAGS"
-ENV  LDFLAGS="-pg -fipa-profile -fprofile-reorder-functions -fvpt -fprofile -fprofile-abs-path -fprofile-arcs -fprofile-dir=/var/cpuminer $LDFLAGS"
+#ENV   CFLAGS="-pg -fipa-profile -fprofile-reorder-functions -fvpt -fprofile -fprofile-abs-path -fprofile-arcs -fprofile-dir=/var/cpuminer $CFLAGS"
+#ENV  LDFLAGS="-pg -fipa-profile -fprofile-reorder-functions -fvpt -fprofile -fprofile-abs-path -fprofile-arcs -fprofile-dir=/var/cpuminer $LDFLAGS"
 
 # Debug
 ENV CPPFLAGS="-DNDEBUG $CPPFLAGS"
