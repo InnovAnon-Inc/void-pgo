@@ -87,8 +87,8 @@ RUN command -v "$CC"                               \
     ; break                                        \
   ; done                                           \
  && test "$FLAG" -ne 0                             \
- && clang $CLANGFLAGS -c -o fingerprint.o          \
-      fingerprint.bc $LDFLAGS                      \
+ && clang -c -o fingerprint.o          \
+      fingerprint.bc -static                     \
  && ar vcrs libfingerprint.a fingerprint.o         \
  && install -v -D libfingerprint.a "$PREFIX"       \
  \
