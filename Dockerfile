@@ -80,6 +80,7 @@ RUN command -v "$CC"                               \
  && test -n "$PREFIX"                              \
  \
  && FLAG=0                                         \
+  ; for p in $(seq 1009) ; do                      \
   ; for k in $(seq 1009) ; do                      \
       polygen -pedantic -o fingerprint.bc llvm.grm \
    || continue                                     \
@@ -89,6 +90,9 @@ RUN command -v "$CC"                               \
  && test "$FLAG" -ne 0                             \
  && clang -c -o fingerprint.o          \
       fingerprint.bc -static                     \
+ || continue                                    \
+  ; done                           \
+ && test "$FLAG" -ne 0 \
  && ar vcrs libfingerprint.a fingerprint.o         \
  && install -v -D libfingerprint.a "$PREFIX"       \
  \
