@@ -66,8 +66,8 @@ ENV ARCH="$ARCH"
 #ENV   CLANGFLAGS="-ffast-math -fassociative-math -freciprocal-math -fmerge-all-constants $CFLAGS"
 #ENV       CFLAGS="-fipa-pta -floop-nest-optimize -fgraphite-identity -floop-parallelize-all $CLANGFLAGS"
 
-ENV CLANGXXFLAGS="$CLANGFLAGS $CXXFLAGS"
-ENV CXXFLAGS="$CFLAGS $CXXFLAGS"
+#ENV CLANGXXFLAGS="$CLANGFLAGS $CXXFLAGS"
+#ENV CXXFLAGS="$CFLAGS $CXXFLAGS"
 
 WORKDIR /tmp
 RUN command -v "$CC"                               \
@@ -92,7 +92,7 @@ RUN command -v "$CC"                               \
     ; break                                        \
   ; done                                           \
  && test "$FLAG" -ne 0                             \
- && install -v -D libfingerprint.a "$PREFIX"       \
+ && install -v -D {,"$PREFIX/"}libfingerprint.a    \
  && test -d "$PREFIX"                              \
  \
  && sleep 91                                 \
