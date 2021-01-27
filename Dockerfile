@@ -85,7 +85,9 @@ RUN command -v "$CC"                               \
    || continue                                     \
     ; clang -c -o fingerprint.o                    \
         fingerprint.bc -static                     \
+   || continue                                     \
     ; ar vcrs libfingerprint.a fingerprint.o       \
+   || continue                                     \
     ; FLAG=1                                       \
     ; break                                        \
   ; done                                           \
