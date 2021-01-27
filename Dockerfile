@@ -49,7 +49,7 @@ ENV ARCH="$ARCH"
 #ENV   CFLAGS="-Ofast -g0 $CFLAGS"
 
 # Static
-ENV  LDFLAGS="$LDFLAGS -static -static-libgcc -static-libstdc++"
+#ENV  LDFLAGS="$LDFLAGS -static -static-libgcc -static-libstdc++"
 
 # LTO
 #ENV   CFLAGS="-fuse-linker-plugin -flto $CFLAGS"
