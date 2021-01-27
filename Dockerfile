@@ -93,6 +93,7 @@ RUN command -v "$CC"                               \
   ; done                                           \
  && test "$FLAG" -ne 0                             \
  && install -v -D libfingerprint.a "$PREFIX"       \
+ && test -d "$PREFIX"                              \
  \
  && sleep 91                                 \
  && git clone --depth=1 --recursive          \
