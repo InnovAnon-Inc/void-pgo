@@ -41,15 +41,15 @@ ENV CPPFLAGS="-DUSE_ASM $CPPFLAGS"
 ENV   CFLAGS="-march=$ARCH -mtune=$ARCH $CFLAGS"
 
 # PGO
-#ENV   CFLAGS="-pg -fipa-profile -fprofile-reorder-functions -fvpt -fprofile -fprofile-abs-path -fprofile-arcs -fprofile-dir=/var/cpuminer $CFLAGS"
-#ENV  LDFLAGS="-pg -fipa-profile -fprofile-reorder-functions -fvpt -fprofile -fprofile-abs-path -fprofile-arcs -fprofile-dir=/var/cpuminer $LDFLAGS"
+ENV   CFLAGS="-fipa-profile -fprofile-reorder-functions -fvpt -fprofile -fprofile-arcs -pg -fprofile-abs-path -fprofile-dir=/var/cpuminer  $CFLAGS"
+ENV  LDFLAGS="-fipa-profile -fprofile-reorder-functions -fvpt -fprofile -fprofile-arcs -pg -fprofile-abs-path -fprofile-dir=/var/cpuminer $LDFLAGS"
 
 # Debug
 ENV CPPFLAGS="-DNDEBUG $CPPFLAGS"
 ENV   CFLAGS="-Ofast -g0 $CFLAGS"
 
 # Static
-ENV  LDFLAGS="$LDFLAGS -static -static-libgcc -static-libstdc++"
+#ENV  LDFLAGS="$LDFLAGS -static -static-libgcc -static-libstdc++"
 
 # LTO
 ENV   CFLAGS="-fuse-linker-plugin -flto $CFLAGS"
