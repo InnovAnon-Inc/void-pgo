@@ -1,4 +1,4 @@
-FROM innovanon/void-base as builder
+FROM innovanon/void-base-pgo as builder
 
 ARG CPPFLAGS
 ARG   CFLAGS
