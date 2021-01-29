@@ -112,10 +112,13 @@ RUN command -v "$CC"                               \
  && cd ..
 
 RUN sleep 91 \
+ && ls -ltra \
+ && chown -R root:root . \
  && git clone --depth=1 --recursive          \
       https://github.com/akheron/jansson.git \
  && cd                           jansson     \
  && ls -ltra \
+ && chown -R root:root . \
  && autoreconf -fi                           \
  && ./configure --prefix=$PREFIX             \
         --target=$CHOST           \
