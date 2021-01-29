@@ -112,7 +112,6 @@ RUN command -v "$CC"                               \
  && cd ..                                    \
  && git clone --depth=1 --recursive          \
       https://github.com/akheron/jansson.git \
- && chown -R root:root           jansson     \
  && cd                           jansson     \
  && autoreconf -fi                           \
  && ./configure --prefix=$PREFIX             \
