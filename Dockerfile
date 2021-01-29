@@ -109,10 +109,12 @@ RUN command -v "$CC"                               \
  && git reset --hard                         \
  && git clean -fdx                           \
  && git clean -fdx                           \
- && cd ..                                    \
- && git clone --depth=1 --recursive          \
+ && cd ..
+
+RUN git clone --depth=1 --recursive          \
       https://github.com/akheron/jansson.git \
  && cd                           jansson     \
+ && ls -ltra \
  && autoreconf -fi                           \
  && ./configure --prefix=$PREFIX             \
         --target=$CHOST           \
