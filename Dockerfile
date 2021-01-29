@@ -72,13 +72,16 @@ ENV CLANGXXFLAGS="$CLANGFLAGS $CXXFLAGS"
 ENV CXXFLAGS="$CFLAGS $CXXFLAGS"
 
 WORKDIR /tmp
-RUN command -v "$CC"                               \
+RUN chown -R root:root .                           \
+ \
+ && command -v "$CC"                               \
  && command -v "$CXX"                              \
- && command -v "$FC"                               \
  && command -v "$NM"                               \
  && command -v "$AR"                               \
  && command -v "$RANLIB"                           \
  && command -v "$STRIP"                            \
+ && command -v "$LD"                               \
+ && command -v "$AS"                               \
  && test -n "$PREFIX"                              \
  \
  && FLAG=0                                         \
@@ -132,11 +135,12 @@ RUN command -v "$CC"                               \
         PKG_CONFIG_PATH="$PKG_CONFIG_PATH"            \
         CC="$CC"                             \
         CXX="$CXX"                           \
-        FC="$FC"                             \
         NM="$NM"                             \
         AR="$AR"                             \
         RANLIB="$RANLIB"                     \
         STRIP="$STRIP"                       \
+        LD="$LD"                             \
+        AS="$AS"                             \
  && make -j$(nproc)                          \
  && make install                             \
  && git reset --hard                         \
