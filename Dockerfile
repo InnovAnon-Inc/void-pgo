@@ -111,7 +111,8 @@ RUN command -v "$CC"                               \
  && git clean -fdx                           \
  && cd ..
 
-RUN git clone --depth=1 --recursive          \
+RUN sleep 91 \
+ && git clone --depth=1 --recursive          \
       https://github.com/akheron/jansson.git \
  && cd                           jansson     \
  && ls -ltra \
