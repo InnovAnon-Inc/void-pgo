@@ -72,6 +72,10 @@ ENV CLANGXXFLAGS="$CLANGFLAGS $CXXFLAGS"
 ENV CXXFLAGS="$CFLAGS $CXXFLAGS"
 
 WORKDIR /tmp
+
+RUN ls -ltra
+
+
 RUN command -v "$CC"                               \
  && command -v "$CXX"                              \
  && command -v "$NM"                               \
